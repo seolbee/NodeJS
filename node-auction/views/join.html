@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="timeline">
+    <form action="/auth/join" method="post" id="join-form">
+        <div class="input-group">
+            <label for="join-email">이메일</label>
+            <input type="email" name="email" id="join-email">
+        </div>
+        <div class="input-group">
+            <label for="join-nick">닉네임</label>
+            <input type="text" name="nick" id="join-nick">
+        </div>
+        <div class="input-group">
+            <label for="join-password">비밀번호</label>
+            <input type="password" name="password" id="join-password">
+        </div>
+        <div class="input-group">
+            <label for="join-money">보유자산</label>
+            <input type="number" name="money" id="join-money">
+        </div>
+        <button type="submit" id="join-btn" class="btn">회원가입</button>
+    </form>
+</div>
+<script>
+    window.onload = () => {
+        if(new URL(location.href).searchParams.get('joinError')){
+            alert(new URL(location.href).searchParams.get('joinError'));
+        }
+    };
+</script>
+{% endblock %}
